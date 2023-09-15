@@ -15,7 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
+        // Category::create([
+        //     'categoryName' => 'Technology'
+            
+        // ]);
+        // Category::create([
+        //     'categoryName' => 'Medicine'
+            
+        // ]);
+        // Category::create([
+        //     'categoryName' => 'Science'
+            
+        // ]);
         Post::factory(10)->create();
 
         // \App\Models\User::factory(10)->create();
