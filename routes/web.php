@@ -19,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PostController::class,'index']);
 
+Route::post('/store',[AdminController::class,'store'])->middleware(['auth', 'verified'])->name('storePost');
 Route::get('/dashboard', [AdminController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/createPost', [AdminController::class,'create'])->middleware(['auth', 'verified'])->name('createPost');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

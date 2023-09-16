@@ -18,16 +18,16 @@
                         <span class = ""></span>
                     </div>
                     <ul class="py-4 font-bold uppercase text-black min-h-screen shadow border">
-                        <li class ="my-10 mt-0"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> DASHBOARD</a></li>
+                        <li class ="my-10 mt-0"><a href="/dashboard" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> DASHBOARD</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> ADD USER</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT USER</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT CATEGORY</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
+                        <li class ="my-10"><a href="/createPost" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT POST</a></li>
                     </ul>
                 </div>
-                
+
 
                 <div class="flex-1 w-full mx-auto">
                     <div class="text-2xl uppercase font-bold w-auto mt-5 text-center">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="overflow-hidden">
-                        
+
                         <table class="border border-collapse shadow table-auto border-slate-400 w-11/12 mx-auto">
                             <thead>
                                 <tr>
@@ -43,28 +43,28 @@
                                     <th class ="border border-slate-300">Category</th>
                                     <th class ="border border-slate-300">Author</th>
                                     <th class ="border border-slate-300">Content</th>
-                                    <th class ="border border-slate-300">ImagePath</th>
+                                    <th class ="border border-slate-300">Image</th>
                                     <th class ="border border-slate-300">isPublished</th>
                                     <th class ="border border-slate-300">created_at</th>
                                 </tr>
                             </thead>
                             <tbody class ="text-center divide-y divide-gray-200 dark:divide-gray-700">
-                                
+
                                 @foreach ($Posts as $post )
-                                                                    
-                                <tr>
+
+                                <tr class = "">
                                     <td class ="border border-slate-300">{{ $post->Title }}</td>
                                     <td class ="border border-slate-300">{{ $post->category->categoryName }}</td>
                                     <td class ="border border-slate-300">{{ $post->Author }}</td>
                                     <td class ="border border-slate-300">{{ $post->Content }}</td>
-                                    <td class ="border border-slate-300">{{ $post->ImagePath }}</td>
-                                    <td class ="border border-slate-300">{{ $post->isPublished === 1 ? 'True': 'False' }}</td>
+                                    <td class ="border border-slate-300"><img src="{{ asset('storage/'.$post->ImagePath ) }}" alt="" class ="h-auto w-24 rounded-lg mx-auto"></td>
+                                    <td class ="border border-slate-300">{{ $post->isPublished === 0 ? 'True': 'False' }}</td>
                                     <td class ="border border-slate-300">{{ $post->created_at->todatestring() }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        
+
                     </div>
 
                 </div>

@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         //
         return view("dashboard",[
-            'Posts' => Post::all(),
+            'Posts' => Post::all()->sortByDesc('id'),
             'Category' => Category::all()
         ]);
     }
@@ -26,6 +26,10 @@ class AdminController extends Controller
     public function create()
     {
         //
+
+        return view("admin.createPost",[
+            'Category' => Category::all()
+        ]);
     }
 
     /**
@@ -34,6 +38,22 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+
+       $formFields = $request->validate([
+       'Title' => 'required',
+       'Author' => 'required',
+       'category_id' => 'required',
+       'Content' => 'required',
+       'isPublished' => 'required'
+    ]);
+    if($request->hasFile('Image')){
+        $formFields['imagePath'] = $request->file('Image')->store('images','public');
+    }
+
+        Post::create($formFields);
+
+
+        return redirect('/dashboard');
     }
 
     /**

@@ -62,9 +62,11 @@
     <section class="w-full flex flex-col items-center px-3">
         @foreach ($Posts as $post )
 
+
+
         <article class="container flex flex-col shadow my-4">
             <a href="#" class="hover:opacity-75">
-                <img src="{{ $post->ImagePath }}" style="width: 400px" height="400px">
+                <img src="{{ asset('storage/'.$post->ImagePath) }}" style="width: 900px; height:300px">
             </a>
             <div class="bg-white flex flex-col justify-center p-6">
                 <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
