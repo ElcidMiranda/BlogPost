@@ -14,8 +14,8 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view("dashboard",[
-            'Posts' => Post::all()->sortByDesc('id'),
+        return view("admin.dashboard",[
+            'Posts' => Post::all(),
             'Category' => Category::all()
         ]);
     }
@@ -53,7 +53,7 @@ class AdminController extends Controller
         Post::create($formFields);
 
 
-        return redirect('/dashboard');
+        return redirect('/admin/dashboard');
     }
 
     /**
@@ -67,17 +67,38 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
         //
+        return view('admin.editPost',[
+            'post' => $post,
+            'Category' => Category::all(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         //
+
+        $formFields = $request->validate([
+            'Title' => 'required',
+            'Author' => 'required',
+            'Content' => 'required',
+            'ImagePath' => 'required',
+            'isPublished' => 'required',
+        ]);
+
+        if($request->hasFile('Image')){
+            $formFields['imagePath'] = $request->file('Image')->store('images','public');
+        }
+
+        $post->create($formFields);
+
+        return redirect(route('dashboard'));
+
     }
 
     /**

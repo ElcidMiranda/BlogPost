@@ -10,7 +10,7 @@
             <a href="" class ="hover:bg-gray-400 rounded py-2 px-2 mx-1">Create</a>
         </li>
         <li class ="px-2 mx-2">
-            <a href="" class ="hover:bg-gray-400 rounded py-2 px-2 mx-1">Admin</a>
+            <a href="{{ route('dashboard') }}" class ="hover:bg-gray-400 rounded py-2 px-2 mx-1">Admin</a>
         </li>
     </ul>
 

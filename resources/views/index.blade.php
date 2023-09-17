@@ -5,7 +5,7 @@
             @if (Route::has('login'))
                 <div class="">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-white font-semibold hover:text-gray-900 dark:text-gray-400
+                        <a href="{{ route('dashboard') }}" class="text-white font-semibold hover:text-gray-900 dark:text-gray-400
                         dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-white font-semibold hover:text-gray-900 dark:text-gray-400

@@ -33,11 +33,13 @@
                     <div class="text-5xl uppercase font-bold w-auto my-7 text-center">
                         Create Post
                     </div>
-
                     <div class="container overflow-hidden my-5 ">
                         <div class = "mx-auto">
-                            <form method="POST" action="/store" class="w-1/2 align-middle mx-auto" enctype="multipart/form-data" >
+
+                            <form method="POST" action="/post/{{ $post->id }}" class="w-1/2 align-middle mx-auto" enctype="multipart/form-data" >
                                 @csrf
+                                @method('PUT')
+
 
 
                                 <div class="md:flex md:items-center mb-6">
@@ -48,7 +50,7 @@
                                   </div>
                                   <div class="md:w-2/3">
                                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white
-                                    focus:border-purple-500" id="inline-full-name" type="text" value="" name ="Title">
+                                    focus:border-purple-500" id="inline-full-name" type="text" value="{{ $post->Title }}" name ="Title">
                                   </div>
                                 </div>
                                 @error('Title')
@@ -64,7 +66,7 @@
                                   </div>
                                   <div class="md:w-2/3">
                                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                    id="inline-password" type="text" placeholder="" name ="Author">
+                                    id="inline-password" type="text" placeholder="" name ="Author" value ="{{ $post->Author }}">
                                   </div>
                                 </div>
                                 @error('Author')
@@ -79,11 +81,17 @@
                                         Category
                                       </label>
                                     </div>
+
+
                                     <div class="md:w-2/3">
                                         <select name="category_id" id="" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full px-4
-                                        text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                                        text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" value ="{{ $post->category->categoryName }}">
+
+
                                         @foreach ($Category as $category)
-                                        <option value="{{ $category->id }}">{{ $category->categoryName  }}</option>
+
+
+                                        <option  value="{{ $category->id }}" {{ $post->category->categoryName === $category->categoryName ? "selected" : "" }} >{{ $category->categoryName  }}</option>
                                         @endforeach
                                         </select>
 
@@ -106,7 +114,7 @@
                                     </div>
                                     <div class="md:w-2/3">
                                       <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white
-                                      focus:border-purple-500" id="inline-full-name" type="text" value="" name ="Content"></textarea>
+                                      focus:border-purple-500" id="inline-full-name" type="text"name ="Content">{{ $post->Content }}</textarea>
                                     </div>
                                   </div>
                                   @error('Content')
@@ -122,14 +130,19 @@
                                     </div>
 
                                     <div class="md:w-2/3">
+
                                         <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0">TRUE</label>
+
                                         <input class="text=white bg-gray-200 appearance-none border-2 border-gray-200 rounded px-4
                                         leading-tight focus:outline-none focus:bg-white
-                                      focus:border-purple-500" type="checkbox" name ="isPublished" value = "0">
+                                      focus:border-purple-500" type="checkbox" name ="isPublished" value = "0"  {{ $post->isPublished === 0 ? "checked" : "" }}>
+
                                         <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0">FALSE</label>
+
                                         <input type="checkbox" name="isPublished" id="" class = "text=white bg-gray-200 appearance-none border-2 border-gray-200 rounded px-4
                                         leading-tight focus:outline-none focus:bg-white
-                                        focus:border-purple-500" value ="1">
+                                        focus:border-purple-500" value ="1" {{ $post->isPublished === 1 ? "checked" : "" }}>
+
                                     </div>
                                   </div>
                                   @error('isPublished')
@@ -163,6 +176,7 @@
                                     </button>
                                   </div>
                                 </div>
+
                               </form>
                         </div>
 

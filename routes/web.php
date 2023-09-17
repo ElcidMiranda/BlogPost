@@ -17,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PostController::class,'index']);
+Route::get('/',[PostController::class,'index'])->name('index');
 
 Route::post('/store',[AdminController::class,'store'])->middleware(['auth', 'verified'])->name('storePost');
-Route::get('/dashboard', [AdminController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::put('/post/{post}',[AdminController::class, 'update'])->name('updatePost');
+Route::get('/edit/{post}',[AdminController::class,'edit'])->name('editPost');
+
+
+Route::get('/admin/dashboard', [AdminController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/createPost', [AdminController::class,'create'])->middleware(['auth', 'verified'])->name('createPost');
 

@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         //
         return view('index',[
-            'Posts'=> Post::latest()->paginate(3),
+            'Posts'=> Post::where('isPublished','0')->paginate(3),
             'Category' => Category::all()
 
         ]);
