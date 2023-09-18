@@ -83,6 +83,7 @@ class AdminController extends Controller
     {
         //
 
+
         $formFields = $request->validate([
             'Title' => 'required',
             'Author' => 'required',
@@ -97,7 +98,7 @@ class AdminController extends Controller
 
         $post->create($formFields);
 
-        return redirect(route('dashboard'));
+        return redirect('/admin/dashboard');
 
     }
 
