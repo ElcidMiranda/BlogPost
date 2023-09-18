@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
@@ -21,13 +22,18 @@ Route::get('/',[PostController::class,'index'])->name('index');
 
 Route::post('/store',[AdminController::class,'store'])->middleware(['auth', 'verified'])->name('storePost');
 
+Route::get('/createPost', [AdminController::class,'create'])->middleware(['auth', 'verified'])->name('createPost');
 Route::put('/post/{post}',[AdminController::class, 'update'])->name('updatePost');
 Route::get('/edit/{post}',[AdminController::class,'edit'])->name('editPost');
+Route::get('/delete/{post}',[AdminController::class,'destroy'])->name('deletePost');
+
+
+Route::get('/createCategory',[CategoryController::class,'create'])->name('createCategory');
 
 
 Route::get('/admin/dashboard', [AdminController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/createPost', [AdminController::class,'create'])->middleware(['auth', 'verified'])->name('createPost');
+
 
 
 Route::middleware('auth')->group(function () {

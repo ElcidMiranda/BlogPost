@@ -21,10 +21,9 @@
                         <li class ="my-10 mt-0"><a href="{{ route('dashboard') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> DASHBOARD</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> ADD USER</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT USER</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT CATEGORY</a></li>
-                        <li class ="my-10"><a href="/createPost" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT POST</a></li>
+                        <li class ="my-10"><a href="{{ route('createCategory') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
+                        <li class ="my-10"><a href="{{ route('createPost') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
+
                     </ul>
                 </div>
 
@@ -63,7 +62,7 @@
                                     <td class ="border border-slate-300">{{ $post->isPublished === 0 ? 'True': 'False' }}</td>
                                     <td class ="border border-slate-300">{{ $post->created_at->todatestring() }}</td>
                                     <td class ="border border-slate-300"><a href="/edit/{{ $post->id }}" class ="hover:bg-blue-500 text-lg rounded p-2">EDIT</a></td>
-                                    <td class ="border border-slate-300"><a href="" class ="hover:bg-blue-500 text-lg rounded p-2">DELETE</a></td>
+                                    <td class ="border border-slate-300"><a href="{{ route('deletePost',$post->id) }}" class ="hover:bg-blue-500 text-lg rounded p-2">DELETE</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

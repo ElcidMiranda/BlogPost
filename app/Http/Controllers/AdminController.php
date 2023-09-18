@@ -88,7 +88,6 @@ class AdminController extends Controller
             'Title' => 'required',
             'Author' => 'required',
             'Content' => 'required',
-            'ImagePath' => 'required',
             'isPublished' => 'required',
         ]);
 
@@ -96,7 +95,7 @@ class AdminController extends Controller
             $formFields['imagePath'] = $request->file('Image')->store('images','public');
         }
 
-        $post->create($formFields);
+        $post->update($formFields);
 
         return redirect('/admin/dashboard');
 
@@ -105,8 +104,11 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
         //
+        $post->delete();
+        return redirect('/admin/dashboard');
+
     }
 }
