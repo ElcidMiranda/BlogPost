@@ -19,12 +19,11 @@
                     </div>
                     <ul class="py-4 font-bold uppercase text-black min-h-screen shadow border">
                         <li class ="my-10 mt-0"><a href="{{ route('dashboard') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> DASHBOARD</a></li>
+                        <li class ="my-10 mt-0"><a href="{{ route('category') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> CATEGORIES</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> ADD USER</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT USER</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT CATEGORY</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
-                        <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT POST</a></li>
+                        <li class ="my-10"><a href="{{ route('createCategory') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
+                        <li class ="my-10"><a href="{{ route('createPost') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE POST</a></li>
                     </ul>
                 </div>
 
@@ -33,11 +32,13 @@
                     <div class="text-5xl uppercase font-bold w-auto my-7 text-center">
                         Create Post
                     </div>
-
                     <div class="container overflow-hidden my-5 ">
                         <div class = "mx-auto">
-                            <form method="POST" action="/store" class="w-1/2 align-middle mx-auto" enctype="multipart/form-data" >
+
+                            <form method="POST" action="{{ route('updateCategory',$category->id) }}" class="w-1/2 align-middle mx-auto" enctype="multipart/form-data" >
                                 @csrf
+                                @method('PUT')
+
 
 
                                 <div class="md:flex md:items-center mb-6">
@@ -48,13 +49,14 @@
                                   </div>
                                   <div class="md:w-2/3">
                                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white
-                                    focus:border-purple-500" id="inline-full-name" type="text" value="" name ="categoryName">
+                                    focus:border-purple-500" id="inline-full-name" type="text" value="{{ $category->categoryName }}" name ="categoryName">
                                   </div>
                                 </div>
                                 @error('categoryName')
                                 <p class="text-red-600 text-center">{{ $message }}</p>
 
                                 @enderror
+
 
 
 
@@ -66,6 +68,7 @@
                                     </button>
                                   </div>
                                 </div>
+
                               </form>
                         </div>
 

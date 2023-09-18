@@ -69,7 +69,7 @@
                 <img src="{{ asset('storage/'.$post->ImagePath) }}" style="width: 900px; height:300px">
             </a>
             <div class="bg-white flex flex-col justify-center p-6">
-                <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
+                <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->categoryName }}</a>
                 <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->Title }}</a>
                 <p href="#" class="text-sm pb-4 ">
                     By <a href="#" class="font-semibold  hover:text-gray-800">{{ $post->Author }}</a>, Published on {{ $post->created_at }}

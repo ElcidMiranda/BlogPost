@@ -31,7 +31,7 @@
 
                 <div class="flex-1 w-full mx-auto">
                     <div class="text-2xl uppercase font-bold w-auto mt-5 text-center">
-                        ALL POST
+                        ALL CATEGORIES
                     </div>
 
                     <div class="overflow-hidden">
@@ -39,31 +39,21 @@
                         <table class="border border-collapse shadow table-auto border-slate-400 w-11/12 mx-auto">
                             <thead>
                                 <tr>
-                                    <th class ="border border-slate-300">Title</th>
-                                    <th class ="border border-slate-300">Category</th>
-                                    <th class ="border border-slate-300">Author</th>
-                                    <th class ="border border-slate-300">Content</th>
-                                    <th class ="border border-slate-300">Image</th>
-                                    <th class ="border border-slate-300">isPublished</th>
-                                    <th class ="border border-slate-300">created_at</th>
+                                    <th class ="border border-slate-300">id</th>
+                                    <th class ="border border-slate-300">Category Name</th>
                                     <th class ="border border-slate-300">Edit</th>
                                     <th class ="border border-slate-300">Delete</th>
                                 </tr>
                             </thead>
                             <tbody class ="table-auto text-center divide-y divide-gray-200 dark:divide-gray-700">
 
-                                @foreach ($Posts as $post )
+                                @foreach ($Categories as $categories )
 
                                 <tr class = "">
-                                    <td class ="border border-slate-300">{{ $post->Title }}</td>
-                                    <td class ="border border-slate-300">{{ $post->category->categoryName }}</td>
-                                    <td class ="border border-slate-300">{{ $post->Author }}</td>
-                                    <td class ="border border-slate-300 w-1/2">{{ $post->Content }}</td>
-                                    <td class ="border border-slate-300"><img src="{{ asset('storage/'.$post->ImagePath ) }}" alt="" class ="h-auto w-24 rounded-lg mx-auto"></td>
-                                    <td class ="border border-slate-300">{{ $post->isPublished === 0 ? 'True': 'False' }}</td>
-                                    <td class ="border border-slate-300">{{ $post->created_at->todatestring() }}</td>
-                                    <td class ="border border-slate-300"><a href="/edit/{{ $post->id }}" class ="hover:bg-blue-500 text-lg rounded p-2">EDIT</a></td>
-                                    <td class ="border border-slate-300"><a href="{{ route('deletePost',$post->id) }}" class ="hover:bg-blue-500 text-lg rounded p-2">DELETE</a></td>
+                                    <td class ="border border-slate-300 p-4">{{ $categories->id }}</td>
+                                    <td class ="border border-slate-300 p-4">{{ $categories->categoryName }}</td>
+                                    <td class ="border border-slate-300 p-4"><a href="{{ route('editCategory',$categories->id) }}" class ="hover:bg-blue-500 text-lg rounded p-2">EDIT</a></td>
+                                    <td class ="border border-slate-300 p-4"><a href="{{ route('deleteCategory',$categories->id) }}" class ="hover:bg-blue-500 text-lg rounded p-2">DELETE</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

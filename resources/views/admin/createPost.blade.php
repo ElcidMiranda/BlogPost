@@ -19,6 +19,7 @@
                     </div>
                     <ul class="py-4 font-bold uppercase text-black min-h-screen shadow border">
                         <li class ="my-10 mt-0"><a href="{{ route('dashboard') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> DASHBOARD</a></li>
+                        <li class ="my-10 mt-0"><a href="{{ route('category') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-warehouse"></i> CATEGORIES</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> ADD USER</a></li>
                         <li class ="my-10"><a href="" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-pen-square"></i> EDIT USER</a></li>
                         <li class ="my-10"><a href="{{ route('createCategory') }}" class = "hover:bg-slate-400 py-4 px-2 rounded"><i class="fas fa-plus-circle"></i> CREATE CATEGORY</a></li>
@@ -123,9 +124,9 @@
                                         <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0">TRUE</label>
                                         <input class="text=white bg-gray-200 appearance-none border-2 border-gray-200 rounded px-4
                                         leading-tight focus:outline-none focus:bg-white
-                                      focus:border-purple-500" type="checkbox" name ="isPublished" value = "0">
+                                      focus:border-purple-500" type="radio" name ="isPublished" value = "0">
                                         <label class="text-gray-500 font-bold md:text-right mb-1 md:mb-0">FALSE</label>
-                                        <input type="checkbox" name="isPublished" id="" class = "text=white bg-gray-200 appearance-none border-2 border-gray-200 rounded px-4
+                                        <input type="radio" name="isPublished" id="" class = "text=white bg-gray-200 appearance-none border-2 border-gray-200 rounded px-4
                                         leading-tight focus:outline-none focus:bg-white
                                         focus:border-purple-500" value ="1">
                                     </div>
