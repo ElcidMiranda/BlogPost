@@ -16,6 +16,19 @@ class Post extends Model
     'imagePath',
     'isPublished'];
 
+    public function scopeFilter($query, array $filters){
+        if ($filters['tag'] ?? false) {
+            $query->where('category_id','like','%' .request('tag').'%');
+            # code...
+        };
+
+        if ($filters['search'] ?? false) {
+            $query->where('Title','like','%' .request('search').'%');
+            # code...
+        };
+
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }

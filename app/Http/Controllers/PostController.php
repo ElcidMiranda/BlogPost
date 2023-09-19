@@ -11,11 +11,13 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+
+
         return view('index',[
-            'Posts'=> Post::where('isPublished','0')->paginate(3),
+            'Posts'=> Post::where('isPublished','0')->filter(request(['tag']))->paginate(3),
             'Category' => Category::all()
 
         ]);
