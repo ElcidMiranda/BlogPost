@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('Title');
             $table->string('Author');
             $table->text('Content');
-            $table->string('ImagePath');
+            $table->string('ImagePath')->nullable();
             $table->boolean('isPublished');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
